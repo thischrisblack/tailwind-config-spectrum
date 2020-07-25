@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tailwind Config Color Spectrum</title>
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+        <link
+            href="https://fonts.googleapis.com/css?family=Roboto|IBM+Plex+Mono"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <h1>Tailwind Config Color Spectrum</h1>
+            <textarea id="config-input"></textarea>
+            <textarea>
+module.exports = {
+                    theme: {
+                        colors: {
+                            transparent: 'transparent',
+                            black: '#000',
+                            white: '#fff',
+                            gray: {
+                                100: '#f7f7f7',
+                                200: '#ebecee',
+                                300: '#dee2e6',
+                                350: '#dddddd',
+                                400: '#bbc1cd',
+                                500: '#adb5bd',
+                                575: '#aaa',
+                                550: '#9da8bd',
+                                600: '#6e7685',
+                                700: '#495057',
+                                725: '#59595A',
+                                750: '#444444',
+                                800: '#343a40',
+                                850: '#333333',
+                                900: '#212529',
+                                950: '#1d1d1d'
+                            },
+                            red: {
+                                100: '#f9ecec',
+                                400: '#fc8181',
+                                500: '#d16c6a',
+                                700: '#c53030'
+                            },
+                            orange: {},
+                            yellow: {
+                                200: '#f5eacd',
+                                400: '#e5c677',
+                                500: '#ffc107',
+                                700: '#c79706'
+                            },
+                            green: {
+                                400: '#20c997',
+                                500: '#7da251',
+                                600: '#1a9c75'
+                            },
+                            teal: {
+                                600: '#17a2b8'
+                            },
+                            blue: {
+                                10: '#ebf8ff',
+                                50: '#dce8ff',
+                                100: '#4d8bff',
+                                300: '#007bff',
+                                600: '#0056b3',
+                                700: '#31518c',
+                                800: '#3e5278',
+                                900: '#243b66'
+                            },
+                            indigo: {},
+                            purple: {
+                                600: '#6f42c1',
+                                700: '#6610f2'
+                            },
+                            pink: {}
+                        },
+                        borderRadius: {
+                            none: '0',
+                            sm: '0.125rem',
+                            default: '0.1875rem',
+                            lg: '0.75rem',
+                            xl: '1rem',
+                            full: '9999px'
+                        },
+                        screens: {
+                            xsm: { min: '1px' },
+                            sm: { min: '768px' },
+                            md: { min: '992px' },
+                            lg: { min: '1024px' },
+                            xl: { min: '1200px' }
+                        },
+                        extend: {
+                            fontFamily: {
+                                'open-sans': ['Merriweather', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+                                sans: [
+                                    '"Source Sans Pro"',
+                                    '"Helvetica Neue"',
+                                    'Helvetica',
+                                    'Arial',
+                                    'sans-serif',
+                                    '-apple-system',
+                                    'BlinkMacSystemFont',
+                                    '"Segoe UI"',
+                                    'Roboto',
+                                    '"Noto Sans"',
+                                    '"Apple Color Emoji"',
+                                    '"Segoe UI Emoji"',
+                                    '"Segoe UI Symbol"',
+                                    '"Noto Color Emoji"'
+                                ],
+                                'sans-serif': ['sans-serif'],
+                                serif: [],
+                                mono: []
+                            },
+                            flex: {
+                                noshrink: '1 0 auto'
+                            },
+                            height: {
+                                5: '1.25rem',
+                                '5.6': '1.4rem',
+                                7: '1.75rem',
+                                '7.75': '1.9375rem',
+                                8: '2rem',
+                                9: '2.25rem',
+                                15: '3.75rem',
+                                30: '7.5rem',
+                                122: '30.5rem',
+                                136: '38.5rem',
+                                164: '41rem'
+                            },
+                            maxWidth: {
+                                '1/5': '20%',
+                                thumb: '3rem',
+                                xxs: '10.5rem',
+                                sm: '25rem',
+                                '3x1': '47rem',
+                                '6x1': '71.25rem',
+                                '12x1': '156.25rem'
+                            },
+                            minWidth: {
+                                '1/5': '20%',
+                                '1/9': '11%',
+                                xs: '1.5rem',
+                                lg: '18.75rem',
+                                xl: '36rem',
+                                xxl: '41rem'
+                            },
+                            maxHeight: {
+                                thumb: '3rem',
+                                48: '12rem',
+                                lg: '30.5rem',
+                                xl1: '31.25rem',
+                                xl: '31.625rem',
+                                '12x1': '156.25rem'
+                            },
+                            minHeight: {
+                                sm: '3rem',
+                                48: '12rem',
+                                lg: '18.75rem',
+                                xl: '36rem',
+                                xxl: '40.25rem'
+                            },
+                            padding: {
+                                xxs: '1px',
+                                xs: '2px'
+                            },
+                            width: {
+                                5: '1.25rem',
+                                '7.75': '1.9375rem',
+                                15: '3.75rem',
+                                '34.75': '8.6875rem',
+                                36: '9rem',
+                                45: '11.25rem',
+                                75: '18.75rem',
+                                90: '22.5rem',
+                                112: '28rem',
+                                164: '41rem',
+                                '236.5': '59.125rem',
+                                wideModal: '68rem',
+                                fullScreenModal: '95vw'
+                            },
+                            spacing: {
+                                micro: '0.06125rem',
+                                14: '3.5rem'
+                            },
+                            inset: {
+                                inset: '0.25rem',
+                                outset: '-0.25rem',
+                                'extra-inset': '0.625rem',
+                                sm: '5.125rem',
+                                xxlneg: '-34.8125rem',
+                                half: '50%',
+                                full: '100%'
+                            },
+                            cursor: {
+                                'nwse-resize': 'nwse-resize',
+                                'ns-resize': 'ns-resize',
+                                'nesw-resize': 'nesw-resize',
+                                'ew-resize': 'ew-resize'
+                            },
+                            margin: {
+                                '-xxs': '-2.5px',
+                                '-xs': '-3px'
+                            },
+                            zIndex: {
+                                1: 1
+                            }
+                        },
+                        boxShadow: {
+                            ml: '-1px 8px 10px 0 rgba(0, 0, 0, 0.23)'
+                        }
+                    },
+                    variants: {},
+                    plugins: []
+                };</textarea
+            >
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>

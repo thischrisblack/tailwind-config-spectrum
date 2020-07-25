@@ -1,0 +1,30 @@
+/*  Available Fonts:
+    font-family: 'Roboto', sans-serif;
+    font-family: 'IBM Plex Mono', monospace;
+*/
+
+:root {
+    --main-font-size: 1.6rem;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+body {
+    font-size: var(--main-font-size);
+    font-family: "Roboto", sans-serif;
+}
+
+.container {
+    padding: 1rem;
+}
