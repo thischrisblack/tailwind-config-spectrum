@@ -1,0 +1,63 @@
+/*  Available Fonts:
+    font-family: 'Roboto', sans-serif;
+    font-family: 'IBM Plex Mono', monospace;
+*/
+
+:root {
+    --main-font-size: 1.6rem;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+body {
+    font-size: var(--main-font-size);
+    font-family: "Roboto", sans-serif;
+}
+
+.container {
+    padding: 1rem;
+}
+
+.color-block {
+    margin: 2rem 0;
+}
+
+.color-bar {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.color-bar:hover {
+    height: 5rem;
+    cursor: pointer;
+}
+
+.color-bar-text {
+    padding: 0.2rem 0.7rem;
+    background-color: white;
+    margin: 2px 5px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.copied-message {
+    padding: 0.2rem 0.7rem;
+    background-color: white;
+    margin: 2px 35px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
