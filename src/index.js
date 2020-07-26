@@ -7,13 +7,13 @@ function tasteTheRainbow(event) {
     const colors = extractColors(event);
     listColors(colors);
     addListeners();
+    configInput.style.display = "none";
 }
 
 function extractColors(event) {
     const input = event.target.value;
     const firstBrace = input.indexOf("{");
     const lastBrace = input.lastIndexOf("}");
-    console.log(lastBrace);
     const configObjectJSON = input
         .substring(firstBrace, lastBrace + 1)
         .split("\n")
@@ -23,16 +23,16 @@ function extractColors(event) {
         .replace(/\"\"/g, '"')
         .replace(/([{,])(\s*)([A-Za-z0-9_\-]+?)\s*:/g, '$1"$3":');
 
-    console.log(configObjectJSON);
-
     const configObject = JSON.parse(configObjectJSON);
     const colors = configObject.theme.colors;
     return colors;
 }
 
 function listColors(colors) {
-    const colorList = document.getElementById("color-list");
+    const colorContainer = document.getElementById("color-container");
+
     const colorEntries = Object.entries(colors);
+
     colorEntries.forEach(([colorName, value]) => {
         const hasModifiers = Object.keys(value).length > 0;
 
@@ -40,7 +40,8 @@ function listColors(colors) {
         let content = `<h3>${colorName}${!hasModifiers ? " {}" : ""}</h3>`;
         colorNameDiv.innerHTML = content;
         colorNameDiv.classList.add("color-block");
-        colorList.appendChild(colorNameDiv);
+        colorContainer.appendChild(colorNameDiv);
+
         if (hasModifiers) {
             listModifiers(colorName, colorNameDiv, value);
         }
@@ -51,33 +52,35 @@ function listModifiers(colorName, parentElement, modifiers) {
     if (typeof modifiers !== "string") {
         const modifierEntries = Object.entries(modifiers);
         modifierEntries.forEach(([modifier, value]) => {
-            const colorBar = getColorBarNode(colorName, modifier, value);
+            const colorBar = createColorBar(colorName, modifier, value);
             parentElement.append(colorBar);
         });
     } else {
-        const colorBar = getColorBarNode(colorName, null, modifiers);
+        const colorBar = createColorBar(colorName, null, modifiers);
         parentElement.append(colorBar);
     }
 }
 
-function getColorBarNode(colorName, modifier, value) {
+function createColorBar(colorName, modifier, value) {
     const className = `${colorName}${modifier ? "-" + modifier : ""}`;
-    const colorBar = document.createElement("div");
+
+    const colorBar = createNode("div", null, "color-bar");
     colorBar.style.backgroundColor = value;
-    colorBar.classList.add("color-bar");
     colorBar.id = className;
-    const classNameElement = getTextSpan(className);
-    const hexNameElement = getTextSpan(value);
+
+    const classNameElement = createNode("span", className, "color-bar-text");
+    const hexNameElement = createNode("span", value, "color-bar-text");
     colorBar.appendChild(classNameElement);
     colorBar.appendChild(hexNameElement);
+
     return colorBar;
 }
 
-function getTextSpan(content) {
-    const span = document.createElement("span");
-    span.classList.add("color-bar-text");
-    span.textContent = content;
-    return span;
+function createNode(nodeType, content, className) {
+    const node = document.createElement(nodeType);
+    node.innerHTML = content;
+    node.classList.add(className);
+    return node;
 }
 
 function addListeners() {
@@ -106,5 +109,5 @@ function showCopiedMessage(element) {
     parentElement.appendChild(span);
     setTimeout(() => {
         parentElement.removeChild(span);
-    }, 1000);
+    }, 2000);
 }
