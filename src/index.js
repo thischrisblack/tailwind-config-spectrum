@@ -12,6 +12,7 @@ function tasteTheRainbow(event) {
 
 function extractColors(event) {
     const input = event.target.value;
+    // Deal with the pasted-in string, accounting for differences in format
     const firstBrace = input.indexOf("{");
     const lastBrace = input.lastIndexOf("}");
     const configObjectJSON = input
@@ -21,11 +22,17 @@ function extractColors(event) {
         .replace(/\s/g, "")
         .replace(/'/g, '"')
         .replace(/\"\"/g, '"')
-        .replace(/([{,])(\s*)([A-Za-z0-9_\-]+?)\s*:/g, '$1"$3":');
+        .replace(/([{,])(\s*)([A-Za-z0-9_\-]+?)\s*:/g, '$1"$3":')
+        .replace(/},}/g, "}}")
+        .replace(/\",}/g, `"}`);
 
-    const configObject = JSON.parse(configObjectJSON);
-    const colors = configObject.theme.colors;
-    return colors;
+    // Get just the "colors" part.
+    let justTheColors = configObjectJSON.match(/({|,)\"colors\":(.*?)}},/)[0];
+
+    // Remove the trailing comma and add outer brackets
+    justTheColors = `{${justTheColors.slice(1, justTheColors.length - 1)}}`;
+
+    return JSON.parse(justTheColors).colors;
 }
 
 function listColors(colors) {
