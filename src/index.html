@@ -16,8 +16,19 @@
                 <p>
                     If you use Tailwind CSS and you have a lot of custom colors
                     in your <code>tailwind.config.js</code> file, it can get
-                    confusing. Paste the contents of your entire config file
-                    here to see what colors and color classes you're using.
+                    confusing.
+                </p>
+                <p>
+                    With this tool, you can paste the contents of your entire
+                    config file into a textarea and see what colors and color
+                    classes you're using. This will help avoid duplicates or
+                    near duplicates, and also help you pick a good custom suffix
+                    to place a new color properly within the light-to-dark
+                    gradient.
+                </p>
+                <p>
+                    Click on a color bar to copy its class suffix to your
+                    clipboard.
                 </p>
                 <textarea
                     id="config-input"
@@ -30,7 +41,9 @@
             </div>
 
             <div id="color-container" class="hidden">
-                <p>Click on a color to copy its class suffix.</p>
+                <p>
+                    Click on a color to copy its class suffix to the clipboard.
+                </p>
             </div>
         </div>
     </body>
