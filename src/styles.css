@@ -18,6 +18,7 @@
 html {
     box-sizing: border-box;
     font-size: 62.5%;
+    position: relative;
 }
 
 body {
@@ -90,4 +91,10 @@ textarea {
 
 .hidden {
     display: none;
+}
+
+.credit {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
 }

@@ -18,12 +18,17 @@
 html {
     box-sizing: border-box;
     font-size: 62.5%;
+    position: relative;
 }
 
 body {
     padding: 1rem;
     font-size: var(--main-font-size);
     font-family: "Roboto", sans-serif;
+}
+
+p {
+    padding: 0.5rem 0;
 }
 
 h1 {
@@ -86,5 +91,11 @@ textarea {
 
 .hidden {
     display: none;
+}
+
+.credit {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
 }
 
