@@ -1,13 +1,22 @@
 import style from "./styles.css";
 
 const configInput = document.getElementById("config-input");
+const colorContainer = document.getElementById("color-container");
+const inputArea = document.getElementById("input-area");
+const notValid = document.getElementById("not-valid");
+
 configInput.addEventListener("input", tasteTheRainbow);
 
 function tasteTheRainbow(event) {
     const colors = extractColors(event);
+    if (!colors) {
+        notValid.classList.remove("hidden");
+        return;
+    }
+    colorContainer.classList.remove("hidden");
     listColors(colors);
     addListeners();
-    configInput.style.display = "none";
+    inputArea.classList.add("hidden");
 }
 
 function extractColors(event) {
@@ -25,19 +34,25 @@ function extractColors(event) {
         .replace(/([{,])(\s*)([A-Za-z0-9_\-]+?)\s*:/g, '$1"$3":')
         .replace(/},}/g, "}}")
         .replace(/\",}/g, `"}`);
-
     // Get just the "colors" part.
-    let justTheColors = configObjectJSON.match(/({|,)\"colors\":(.*?)}},/)[0];
+    let justTheColors = configObjectJSON.match(/({|,)\"colors\":(.*?)}},/);
+
+    if (!justTheColors) {
+        return null;
+    }
 
     // Remove the trailing comma and add outer brackets
-    justTheColors = `{${justTheColors.slice(1, justTheColors.length - 1)}}`;
+    justTheColors = `{${justTheColors[0].slice(
+        1,
+        justTheColors[0].length - 1
+    )}}`;
 
-    return JSON.parse(justTheColors).colors;
+    const colors = JSON.parse(justTheColors).colors;
+
+    return colors;
 }
 
 function listColors(colors) {
-    const colorContainer = document.getElementById("color-container");
-
     const colorEntries = Object.entries(colors);
 
     colorEntries.forEach(([colorName, value]) => {
@@ -99,7 +114,7 @@ function addListeners() {
 
 function copyClass(event) {
     const hiddenInput = document.createElement("input");
-    hiddenInput.value = event.target.id;
+    hiddenInput.value = `-${event.target.id}`;
     hiddenInput.style.opacity = 0;
     event.target.appendChild(hiddenInput);
     hiddenInput.select();
@@ -112,7 +127,7 @@ function showCopiedMessage(element) {
     const parentElement = event.target;
     const span = document.createElement("span");
     span.classList.add("copied-message");
-    span.textContent = `Class "${parentElement.id}" copied to clipboard`;
+    span.textContent = `Class suffix "-${parentElement.id}" copied to clipboard`;
     parentElement.appendChild(span);
     setTimeout(() => {
         parentElement.removeChild(span);
