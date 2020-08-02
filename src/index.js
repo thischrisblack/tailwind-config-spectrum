@@ -1,11 +1,11 @@
 import style from "./styles.css";
 
-const configInput = document.getElementById("config-input");
-const colorContainer = document.getElementById("color-container");
+const userInput = document.getElementById("user-input");
 const inputArea = document.getElementById("input-area");
 const notValid = document.getElementById("not-valid");
+const colorContainer = document.getElementById("color-container");
 
-configInput.addEventListener("input", tasteTheRainbow);
+userInput.addEventListener("input", tasteTheRainbow);
 
 function tasteTheRainbow(event) {
     const colors = extractColors(event);
